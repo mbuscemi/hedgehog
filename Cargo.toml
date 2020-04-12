@@ -1,0 +1,8 @@
+[package]
+name = "hedgehog"
+version = "0.1.0"
+authors = ["mbuscemi <matthew.buscemi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+web-view = { version = "0.6.2" }
