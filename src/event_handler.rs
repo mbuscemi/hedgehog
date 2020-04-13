@@ -1,13 +1,24 @@
-use web_view::{ WebView, WVResult };
-use crate::message::Message;
+extern crate tinyfiledialogs as tfd;
 
-pub fn handle(_webview: &mut WebView<()>, arg: &str) -> WVResult {
+use web_view::{ WebView, WVResult };
+use crate::file;
+use crate::message::Message;
+use crate::rpc;
+
+pub fn handle(webview: &mut WebView<()>, arg: &str) -> WVResult {
     match serde_json::from_str(arg) {
         Ok(message) => {
             match message {
-                Message::OpenFileSelector => {
+                Message::OpenFile => {
                     println!("OpenFileSelector event invoked");
-                    Ok(())
+
+                    match tfd::open_file_dialog("Open File", "", None) {
+                        Some(path) => {
+                            rpc::execute_callback(webview, "placeFileContents", file::read(path));
+                            Ok(())
+                        },
+                        None => Ok(())
+                    }
                 },
             }
         }

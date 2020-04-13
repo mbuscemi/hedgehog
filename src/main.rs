@@ -2,7 +2,9 @@
 extern crate serde_derive;
 
 mod event_handler;
+mod file;
 mod message;
+mod rpc;
 
 use web_view::*;
 

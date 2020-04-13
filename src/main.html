@@ -2,9 +2,17 @@
 <html>
     <body>
         <header>
-            <button onclick="external.invoke(JSON.stringify({ msg: 'OpenFileSelector' }))">Open</button>
+            <button onclick="external.invoke(JSON.stringify({ msg: 'OpenFile' }))">Open</button>
         </header>
-        <section id="main-editor"></section>
+        <section id="main-editor">
+            <div id="editor"></div>
+        </section>
         <footer></footer>
+        <script type="text/javascript">
+            window.placeFileContents = function(contents) {
+                var editor = document.getElementById("editor");
+                editor.innerHTML = contents;
+            }
+        </script>
     </body>
 </html>
