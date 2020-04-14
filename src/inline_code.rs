@@ -44,10 +44,10 @@ fn inline_wasm(wasm_file: Vec<u8>) -> String {
 }
 
 fn inline_script(script: String) -> String {
-    format!(r#"<script type="text/javascript">{}</script>"#, replace_yew_yasm_with_inline_wasm(script))
+    format!(r#"<script type="text/javascript">{}</script>"#, replace_yew_wasm_with_inline_wasm(script))
 }
 
-fn replace_yew_yasm_with_inline_wasm(file_contents: String) -> String {
+fn replace_yew_wasm_with_inline_wasm(file_contents: String) -> String {
     file_contents.replace(YEW_WASM_LOADER, INLINE_WASM_LOADER)
 }
 
