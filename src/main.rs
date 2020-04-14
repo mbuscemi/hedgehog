@@ -3,6 +3,7 @@ extern crate serde_derive;
 
 mod event_handler;
 mod file;
+mod inline_code;
 mod message;
 mod rpc;
 
@@ -11,7 +12,7 @@ use web_view::*;
 fn main() {
     web_view::builder()
         .title("Hedgehog")
-        .content(Content::Html(include_str!("main.html")))
+        .content(Content::Html(inline_code::html()))
         .size(1024, 768)
         .resizable(true)
         .debug(true)
