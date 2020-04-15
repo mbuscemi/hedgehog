@@ -645,6 +645,9 @@ Module.STDWEB_PRIVATE.acquire_tmp = function( dummy ) {
             "__cargo_web_snippet_cd41a77d0178ae27c833ef2950e5f1a48a1455c1": function($0, $1, $2) {
                 $1 = Module.STDWEB_PRIVATE.to_js($1);$2 = Module.STDWEB_PRIVATE.to_js($2);Module.STDWEB_PRIVATE.from_js($0, (function(){try{return{value:function(){return($1).removeChild(($2));}(),success:true};}catch(error){return{error:error,success:false};}})());
             },
+            "__cargo_web_snippet_d269478a74d58d4ebd94236738f1835106c129c3": function() {
+                external.invoke(JSON.stringify({msg:"OpenFile"}));
+            },
             "__cargo_web_snippet_db12d53e9596e9bc7860a8231ec85044629926e7": function($0) {
                 var o = Module.STDWEB_PRIVATE.acquire_js_reference( $0 );return (o instanceof HTMLTextAreaElement);
             },
