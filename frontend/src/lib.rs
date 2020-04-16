@@ -1,8 +1,10 @@
 #[macro_use]
 extern crate stdweb;
 
+// #[macro_use]
+extern crate stdweb_derive;
+
 use yew::{html, Component, ComponentLink, Html, ShouldRender};
-// use stdweb::js_export;
 
 struct File {
     contents: String,
@@ -23,6 +25,8 @@ pub struct Model {
     file: File,
 }
 
+// #[derive(Clone, Debug, PartialEq, Eq, ReferenceType)]
+// #[reference(instance_of = "Msg")]
 pub enum Msg {
     OpenFile,
     SetFile(String),
@@ -33,6 +37,13 @@ impl Component for Model {
     type Properties = ();
 
     fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
+
+        let set_file_callback = link.callback(|content: String| Msg::SetFile(content));
+        let value = js! {
+            var callback = @{set_file_callback};
+            return document.addEventListener("set_file", content => callback(content));
+        };
+
         Model {
             link: link,
             file: File::empty(),
@@ -61,19 +72,7 @@ impl Component for Model {
                     <div id="editor">{ &self.file.contents }</div>
                 </section>
                 <footer></footer>
-                // <script>
-                //     js! {
-                //         var placeFileContents = @{self.link.callback(|contents| Msg::SetFile(contents))};
-                //     }
-                // </script>
             </div>
         }
     }
 }
-
-// impl Model {
-//     #[js_export]
-//     fn set_file(&self, contents: String) {
-//         self.send_message(Msg::SetFile(contents))
-//     }
-// }
