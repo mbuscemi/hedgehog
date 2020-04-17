@@ -570,6 +570,9 @@ Module.STDWEB_PRIVATE.acquire_tmp = function( dummy ) {
             "__cargo_web_snippet_0e54fd9c163fcf648ce0a395fde4500fd167a40b": function($0) {
                 var r = Module.STDWEB_PRIVATE.acquire_js_reference( $0 );return (r instanceof DOMException) && (r.name === "InvalidCharacterError");
             },
+            "__cargo_web_snippet_2486bf97ba48784d7b81d5c4ffb1413b5ad88ea2": function($0) {
+                $0 = Module.STDWEB_PRIVATE.to_js($0);var set_file_callback=($0);document.addEventListener("setfile",event=>set_file_callback(event.detail.contents));
+            },
             "__cargo_web_snippet_2908dbb08792df5e699e324eec3e29fd6a57c2c9": function($0) {
                 var o = Module.STDWEB_PRIVATE.acquire_js_reference( $0 );return (o instanceof HTMLInputElement);
             },
@@ -587,9 +590,6 @@ Module.STDWEB_PRIVATE.acquire_tmp = function( dummy ) {
             },
             "__cargo_web_snippet_614a3dd2adb7e9eac4a0ec6e59d37f87e0521c3b": function($0, $1) {
                 $1 = Module.STDWEB_PRIVATE.to_js($1);Module.STDWEB_PRIVATE.from_js($0, (function(){return($1).error;})());
-            },
-            "__cargo_web_snippet_652c3349b3924cb8fe3ba21ac13ded747ec42769": function($0) {
-                Module.STDWEB_PRIVATE.from_js($0, (function(){return document.addEventListener("set_file",content=>alert(content));})());
             },
             "__cargo_web_snippet_690311d2f9134ac0983620c38a9e6460d4165607": function($0, $1) {
                 $1 = Module.STDWEB_PRIVATE.to_js($1);Module.STDWEB_PRIVATE.from_js($0, (function(){return($1).nextSibling;})());

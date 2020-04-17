@@ -14,7 +14,7 @@ pub fn handle(webview: &mut WebView<()>, arg: &str) -> WVResult {
 
                     match tfd::open_file_dialog("Open File", "", None) {
                         Some(path) => {
-                            rpc::execute_callback(webview, "placeFileContents", file::read(path));
+                            rpc::set_file(webview, file::read(path));
                             Ok(())
                         },
                         None => Ok(())
