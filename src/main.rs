@@ -1,8 +1,6 @@
 use relm::{Relm, Update, Widget};
-use gtk::{ContainerExt, GtkWindowExt, Orientation::Vertical, WidgetExt, Window, WindowType};
+use gtk::{Button, GtkWindowExt, HeaderBar, HeaderBarExt, IconSize, WidgetExt, Window, WindowType};
 use relm_derive::Msg;
-
-const APP_TITLE: &str = "Hedgehog";
 
 #[derive(Msg)]
 pub enum Msg {
@@ -13,6 +11,7 @@ pub struct Model;
 
 #[derive(Clone)]
 struct Widgets {
+    header_bar: HeaderBar,
     window: Window,
 }
 
@@ -45,17 +44,21 @@ impl Widget for Win {
     }
 
     fn view(_: &Relm<Self>, model: Self::Model) -> Self {
-        let vbox = gtk::Box::new(Vertical, 0);
+        let button = Button::from_icon_name(Some("open-menu-symbolic"), IconSize::Button);
+
+        let header_bar = HeaderBar::new();
+        header_bar.pack_end(&button);
+        header_bar.set_show_close_button(true);
         
         let window = Window::new(WindowType::Toplevel);
-        window.add(&vbox);
+        window.set_titlebar(Some(&header_bar));
 
-        window.set_title(APP_TITLE);
         window.show_all();
 
         Win {
             _model: model,
             widgets: Widgets {
+                header_bar,
                 window
             }
         }
