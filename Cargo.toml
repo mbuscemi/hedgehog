@@ -1,0 +1,10 @@
+[package]
+name = "hedgehog"
+version = "0.1.0"
+authors = ["mbuscemi <matthew.buscemi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+gtk = "0.9.2"
+relm = "0.21.0"
+relm-derive = "0.21.0"
